@@ -1,13 +1,26 @@
 <template>
     <header>
-        <h1>Task Tracker</h1>
+        <h1>{{title}}</h1>
+        <CommonButton @toggle-add-task="$emit('toggle-add-task')" 
+        :text="showAddTask ? 'Close' : 'Add Task'" 
+        :color="showAddTask ? 'red' : 'blue'" />
+
     </header>
 </template>
 
 <script>
- export default {
+  import CommonButton from './Button.vue'
+
+  export default {
     name: 'HeaderTitle',
- }
+    props: {
+      title: String,
+      showAddTask: Boolean
+    },
+    components: {
+      CommonButton,
+    }
+  }
 </script>
 
 <style  scoped>
